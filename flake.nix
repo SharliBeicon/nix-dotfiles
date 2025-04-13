@@ -13,46 +13,15 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
   };
 
-  outputs = inputs @ {
-    self,
-    nixpkgs,
-    nix-darwin,
-    home-manager,
-    ...
-  }: let
-    makeHomeManagerConfiguration = {
-      system,
-      username,
-      homeDirectory ? "/Users/${username}",
-    }: let
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
-    in
-      home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-
-        modules = [
-          ./modules/home.nix
-          {
-            home = {
-              inherit homeDirectory username;
-              stateVersion = "24.11";
-            };
-          }
-        ];
-        extraSpecialArgs = { inherit inputs; };
-      };
-  in {
-    formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.alejandra;
-    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
-    homeConfigurations.carlostocinocubelo = makeHomeManagerConfiguration {
+  outputs = { self, nixpkgs, nix-darwin, home-manager, ... } : {
+    darwinConfiguration."carlostocinocubelo" = nix-darwin.lib.darwinSystem {
       system = "aarch64-darwin";
-      username = "carlostocinocubelo";
+      modules = [
+        home-manager.darwinModules.home-manager
+        ./hosts/carlostocinocubelo/default.nix
+      ];
     };
   };
 }

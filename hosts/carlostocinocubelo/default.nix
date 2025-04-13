@@ -1,6 +1,7 @@
-{ config, pkgs, inputs, ... }:
-
 {
+home-manager.useGlobalPkgs = true;
+home-manager.useUserPackages = true;
+home-manager.users.carlostocinocubelo = { pkgs, ... }: {
   home.username = "carlostocinocubelo";
   home.homeDirectory = "/Users/carlostocinocubelo";
   home.stateVersion = "24.11";
@@ -29,7 +30,9 @@
       unar
       eza
       fzf
-      nerd-fonts.iosevka
+      (nerdfonts.override { fonts = [ "FiraCode" "Iosevka" ]; })
+      fira-code
+      iosevka
       terraform
       terragrunt
     ];
@@ -437,4 +440,5 @@
     source = ../nvim;
     recursive = true;
   };
+}
 }
