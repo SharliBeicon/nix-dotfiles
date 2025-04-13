@@ -155,8 +155,16 @@
         background_opacity = "1.0";
         font_family = "Iosevka Nerd Font Mono";
         font_size = "18.0";
+        shell_integration = "no_cursor";
         cursor_shape = "block";
         window_padding_width = "8";
+
+        text_composition_strategy = "platform";
+
+        sync_to_monitor = "yes";
+
+        tab_bar_style = "powerline";
+        tab_powerline_style = "slanted";
 
         initial_window_width = "175c";
         initial_window_height = "41c";
