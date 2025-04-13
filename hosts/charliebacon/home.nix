@@ -148,43 +148,115 @@
         ".direnv"
       ];
     };
-    kitty = {
+    wezterm = {
       enable = true;
+      extraConfig = ''
+        return {
+          bold_brightens_ansi_colors = "BrightAndBold",
+          font = wezterm.font("Iosevka Nerd Font"),
+          color_scheme = "gruvbox_material_dark_hard",
+          color_schemes = {
+            ["gruvbox_material_dark_hard"] = {
+              foreground = "#D4BE98",
+              background = "#1D2021",
+              cursor_bg = "#D4BE98",
+              cursor_border = "#D4BE98",
+              cursor_fg = "#1D2021",
+              selection_bg = "#D4BE98" ,
+              selection_fg = "#3C3836",
 
-      settings = {
-        background_opacity = "1.0";
-        font_family = "Iosevka Nerd Font Mono";
-        font_size = "18.0";
-        shell_integration = "no_cursor";
-        cursor_shape = "block";
-        window_padding_width = "8";
+              ansi = {"#1d2021","#ea6962","#a9b665","#d8a657", "#7daea3","#d3869b", "#89b482","#d4be98"},
+              brights = {"#eddeb5","#ea6962","#a9b665","#d8a657", "#7daea3","#d3869b", "#89b482","#d4be98"}
+            },
+            ["gruvbox_material_light_hard"] = {
+                foreground = "#654735",
+                background = "#F9F5D7",
+                cursor_bg = "#654735",
+                cursor_border = "#654735",
+                cursor_fg = "#F9F5D7",
+                selection_bg = "#F3EAC7" ,
+                selection_fg = "#4F3829",
 
-        text_composition_strategy = "platform";
-
-        sync_to_monitor = "yes";
-
-        tab_bar_style = "powerline";
-        tab_powerline_style = "slanted";
-
-        initial_window_width = "175c";
-        initial_window_height = "41c";
-        enabled_layouts = "grid";
-        include = "themes/gruvbox_dark.conf";
-      };
-
-      keybindings = {
-        "ctrl+super+enter" = "toggle_layout stack";
-        "ctrl+super+h" = "neighboring_window left";
-        "ctrl+super+l" = "neighboring_window right";
-        "ctrl+super+k" = "neighboring_window up";
-        "ctrl+super+j" = "neighboring_window down";
-        "shift+up" =  "move_window up";
-        "shift+left" =  "move_window left";
-        "shift+right" = "move_window right";
-        "shift+down" =  "move_window down";
-        "super+l" = "launch --location=hsplit";
-        "super+k" = "launch --location=vsplit";
-      };
+                ansi = {"#1d2021","#ea6962","#a9b665","#d8a657", "#7daea3","#d3869b", "#89b482","#d4be98"},
+                brights = {"#eddeb5","#ea6962","#a9b665","#d8a657", "#7daea3","#d3869b", "#89b482","#d4be98"}
+            },
+          },
+          font_size = 18.0,
+          keys = {
+            -- Close panes with shift+w.
+            {
+              key = "w",
+              mods = "CMD|SHIFT",
+              action = wezterm.action.CloseCurrentPane { confirm = true },
+            },
+            -- Vim-style hjkl navigation between panes.
+            {
+              key = "h",
+              mods = "CMD|SHIFT",
+              action = wezterm.action.ActivatePaneDirection("Left"),
+            },
+            {
+              key = "j",
+              mods = "CMD|SHIFT",
+              action = wezterm.action.ActivatePaneDirection("Down"),
+            },
+            {
+              key = "k",
+              mods = "CMD|SHIFT",
+              action = wezterm.action.ActivatePaneDirection("Up"),
+            },
+            {
+              key = "l",
+              mods = "CMD|SHIFT",
+              action = wezterm.action.ActivatePaneDirection("Right"),
+            },
+            -- iTerm-style cmd-d/cmd-shift-d pane splitting.
+            {
+              key = "d",
+              mods = "CMD",
+              action = wezterm.action.SplitPane({direction = "Right"})
+            },
+            {
+              key = "d",
+              mods = "CMD|SHIFT",
+              action = wezterm.action.SplitPane({direction = "Down"})
+            },
+            -- iTerm-style cmd-shift-enter pane zoom toggle.
+            {
+              key = "Enter",
+              mods = "CMD|SHIFT",
+              action = wezterm.action.TogglePaneZoomState,
+            },
+            -- Scroll between prompts.
+            {
+              key = "UpArrow",
+              mods = "CMD|SHIFT",
+              action = wezterm.action.ScrollToPrompt(-1),
+            },
+            {
+              key = "DownArrow",
+              mods = "CMD|SHIFT",
+              action = wezterm.action.ScrollToPrompt(1),
+            },
+            -- Type a hash symbol.
+            {
+              key = "3",
+              mods = "OPT",
+              action = wezterm.action.SendString("#"),
+            },
+          },
+          hide_tab_bar_if_only_one_tab = true,
+          mouse_bindings = {
+            {
+              event = { Down = { streak = 3, button = 'Left' } },
+              action = wezterm.action.SelectTextAtMouseCursor 'SemanticZone',
+              mods = 'NONE',
+            },
+          },
+          scrollback_lines = 100000,
+          use_fancy_tab_bar = true,
+        }
+      '';
     };
     starship = {
       enable = true;

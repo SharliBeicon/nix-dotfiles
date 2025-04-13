@@ -25,7 +25,7 @@
     };
   };
 
-  outputs = inputs @ { self, nixpkgs, nix-darwin, home-manager, nix-homebrew, homebrew-core, homebrew-cask, ghostty, ... } : {
+  outputs = inputs @ { self, nixpkgs, nix-darwin, home-manager, nix-homebrew, homebrew-core, homebrew-cask, ... } : {
     darwinConfigurations."charliebacon" = nix-darwin.lib.darwinSystem {
       system = "aarch64-darwin";
       modules = [

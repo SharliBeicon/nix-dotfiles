@@ -1,12 +1,12 @@
 local options = {
   base46 = {
-    theme = "onenord_light", -- default theme
+    theme = "gruvchad", -- default theme
     hl_add = {},
     hl_override = {},
     integrations = {},
     changed_themes = {},
     transparency = false,
-    theme_toggle = { "kanagawa", "onenord_light" },
+    theme_toggle = { "gruvchad", "onenord_light" },
   },
 
   ui = {
