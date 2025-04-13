@@ -23,6 +23,8 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
+    
+    fenix.url = "github:nix-community/fenix";
   };
 
   outputs = inputs @ { self, nixpkgs, nix-darwin, home-manager, nix-homebrew, homebrew-core, homebrew-cask, ... } : {

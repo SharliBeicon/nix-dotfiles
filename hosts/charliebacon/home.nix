@@ -1,8 +1,12 @@
-{ pkgs, inputs, ... }: {
+{ pkgs, inputs, ... }: 
+let
+  rustToolchain = inputs.fenix.packages.${pkgs.system}.stable.toolchain;
+in {
   home.username = "charliebacon";
   home.homeDirectory = "/Users/charliebacon";
   home.stateVersion = "24.11";
     home.packages = with pkgs; [
+      rustToolchain
       pyenv
       nodejs
       deno
@@ -30,8 +34,7 @@
       nerd-fonts.iosevka
       terraform
       terragrunt
-      rustc
-      cargo
+      git-lfs
     ];
 
   home.file = {
@@ -181,7 +184,7 @@
                 brights = {"#eddeb5","#ea6962","#a9b665","#d8a657", "#7daea3","#d3869b", "#89b482","#d4be98"}
             },
           },
-          font_size = 18.0,
+          font_size = 19.0,
           keys = {
             -- Close panes with shift+w.
             {
