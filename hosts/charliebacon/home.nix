@@ -35,6 +35,8 @@ in {
       terraform
       terragrunt
       git-lfs
+      just
+      postgresql
     ];
 
   home.file = {
@@ -80,6 +82,7 @@ in {
     };
     git = {
       enable = true;
+      lfs.enable = true;
       userName = "Charlie Bacon";
       userEmail = "charliebacon@gmail.com";
       aliases = {
