@@ -26,8 +26,9 @@
     };
     LaunchServices.LSQuarantine = false;
   };
-
+  
   homebrew = {
+    enable = true;
     onActivation = {
       upgrade = true;
       autoUpdate = true;
