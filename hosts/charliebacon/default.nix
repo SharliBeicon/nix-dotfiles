@@ -40,6 +40,8 @@
       "discord"
       "karabiner-elements"
       "signal"
+      "raycast"
+      "zen-browser"
     ];
   };
 
