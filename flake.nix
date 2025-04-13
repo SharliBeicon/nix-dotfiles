@@ -16,11 +16,11 @@
   };
 
   outputs = { self, nixpkgs, nix-darwin, home-manager, ... } : {
-    darwinConfigurations."carlostocinocubelo" = nix-darwin.lib.darwinSystem {
+    darwinConfigurations."charliebacon" = nix-darwin.lib.darwinSystem {
       system = "aarch64-darwin";
       modules = [
         home-manager.darwinModules.home-manager
-        ./hosts/carlostocinocubelo/default.nix
+        ./hosts/charliebacon/default.nix
       ];
     };
   };

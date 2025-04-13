@@ -3,15 +3,15 @@
 {
   system.stateVersion = 6;
 
-  users.users.carlostocinocubelo = {
-    name = "carlostocinocubelo";
-    home = "/Users/carlostocinocubelo";
+  users.users.charliebacon = {
+    name = "charliebacon";
+    home = "/Users/charliebacon";
   };
 
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    users.carlostocinocubelo = import ./home.nix;
+    users.charliebacon = import ./home.nix;
   };
 
   system.defaults = {
