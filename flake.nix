@@ -24,15 +24,25 @@
       flake = false;
     };
     
-    fenix.url = "github:nix-community/fenix";
+    fenix = {
+      url = "github:nix-community/fenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs @ { self, nixpkgs, nix-darwin, home-manager, nix-homebrew, homebrew-core, homebrew-cask, ... } : {
+  outputs = inputs @ { self, nixpkgs, nix-darwin, home-manager, nix-homebrew, homebrew-core, homebrew-cask, fenix,... } : {
+    packages.aarch64-darwin.default = fenix.packages.aarch64-darwin.stable.toolchain;
     darwinConfigurations."charliebacon" = nix-darwin.lib.darwinSystem {
       system = "aarch64-darwin";
       modules = [
         home-manager.darwinModules.home-manager
         nix-homebrew.darwinModules.nix-homebrew
+        ({ pkgs, ... }: {
+          nixpkgs.overlays = [ fenix.overlays.default ];
+          environment.systemPackages = with pkgs; [
+            fenix.packages.${pkgs.system}.stable.completeToolchain
+          ];
+        })
         {
           nix-homebrew = {
             enable = true;

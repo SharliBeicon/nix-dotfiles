@@ -1,12 +1,8 @@
-{ pkgs, inputs, ... }: 
-let
-  rustToolchain = inputs.fenix.packages.${pkgs.system}.stable.toolchain;
-in {
+{ pkgs, inputs, ... }: {
   home.username = "charliebacon";
   home.homeDirectory = "/Users/charliebacon";
   home.stateVersion = "24.11";
     home.packages = with pkgs; [
-      rustToolchain
       pyenv
       nodejs
       deno
@@ -488,25 +484,11 @@ in {
       oh-my-zsh.plugins = [ "git" "z" "fzf" ];
       oh-my-zsh.theme = "robbyrussell";
 
+      sessionVariables = {
+        RUSTUP_TOOLCHAIN = "stable";
+      };
+
       initExtra = ''
-        export NVM_DIR="$HOME/.nvm"
-        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-        [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-
-        autoload -U add-zsh-hook
-        add-zsh-hook chpwd use_nvmrc
-        use_nvmrc() {
-          if [[ -f .nvmrc && -r .nvmrc ]]; then
-            nvm use
-          fi
-        }
-        use_nvmrc
-
-        export PYENV_ROOT="$HOME/.pyenv"
-        export PATH="$PYENV_ROOT/bin:$PATH"
-        eval "$(pyenv init --path)"
-        eval "$(pyenv init -)"
-
         export PROTO_HOME="$HOME/.proto"
         export PATH="$PROTO_HOME/shims:$PROTO_HOME/bin:$PATH"
         
