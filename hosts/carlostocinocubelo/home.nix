@@ -27,7 +27,7 @@
       unar
       eza
       fzf
-      (nerdfonts.override { fonts = [ "FiraCode" "Iosevka" ]; })
+      nerdfonts.iosevka
       fira-code
       iosevka
       terraform

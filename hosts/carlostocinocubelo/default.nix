@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 
 {
+  system.stateVersion = 6;
+
   users.users.carlostocinocubelo = {
     name = "carlostocinocubelo";
     home = "/Users/carlostocinocubelo";
