@@ -15,7 +15,32 @@
   };
 
   system.defaults = {
-    dock.autohide = true;
+    dock = {
+      autohide = true;
+      show-recents = false;
+    };
+    finder = {
+      AppleShowAllFiles = true;
+      AppleShowAllExtensions = true;
+      CreateDesktop = false;
+    };
+    LaunchServices.LSQuarantine = false;
+  };
+
+  homebrew = {
+    onActivation = {
+      upgrade = true;
+      autoUpdate = true;
+    };
+    casks = [
+      "whatsapp"
+      "telegram"
+      "slack"
+      "docker"
+      "discord"
+      "karabiner-elements"
+      "signal"
+    ];
   };
 
   nixpkgs.config.allowUnfree = true;

@@ -16,7 +16,7 @@
   };
 
   outputs = { self, nixpkgs, nix-darwin, home-manager, ... } : {
-    darwinConfiguration."carlostocinocubelo" = nix-darwin.lib.darwinSystem {
+    darwinConfigurations."carlostocinocubelo" = nix-darwin.lib.darwinSystem {
       system = "aarch64-darwin";
       modules = [
         home-manager.darwinModules.home-manager

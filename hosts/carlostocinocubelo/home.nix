@@ -27,19 +27,19 @@
       unar
       eza
       fzf
-      nerdfonts.iosevka
-      fira-code
-      iosevka
+      nerd-fonts.iosevka
       terraform
       terragrunt
+      rustc
+      cargo
     ];
 
   home.file = {
     ".config/btop/themes/catppuccin_mocha.theme" = {
-      source = ../files/btop/themes/catppuccin_mocha.theme;
+      source = ../../files/btop/themes/catppuccin_mocha.theme;
     };
     ".config/kitty/themes/gruvbox_dark.conf" = {
-      source = ../files/kitty/themes/gruvbox_dark.conf;
+      source = ../../files/kitty/themes/gruvbox_dark.conf;
     };
   };
 
@@ -423,6 +423,8 @@
 
         export PROTO_HOME="$HOME/.proto"
         export PATH="$PROTO_HOME/shims:$PROTO_HOME/bin:$PATH"
+        
+        source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
       '';
     };
     neovim = {
@@ -434,7 +436,7 @@
   };
 
   xdg.configFile.nvim = {
-    source = ../nvim;
+    source = ../../nvim;
     recursive = true;
   };
 }
