@@ -1,4 +1,4 @@
-{ pkgs , ... }: {
+{ pkgs, inputs, ... }: {
   home.username = "charliebacon";
   home.homeDirectory = "/Users/charliebacon";
   home.stateVersion = "24.11";
@@ -59,7 +59,7 @@
     or = "odin run .";
     rgf = "rg --files | rg";
   };
-
+  
   programs = {
     home-manager.enable = true;
     bat = {

@@ -25,7 +25,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nix-darwin, home-manager, nix-homebrew, homebrew-core, homebrew-cask, ... } : {
+  outputs = inputs @ { self, nixpkgs, nix-darwin, home-manager, nix-homebrew, homebrew-core, homebrew-cask, ghostty, ... } : {
     darwinConfigurations."charliebacon" = nix-darwin.lib.darwinSystem {
       system = "aarch64-darwin";
       modules = [
@@ -40,6 +40,11 @@
               "homebrew/homebrew-cask" = homebrew-cask;
             };
             mutableTaps = false;
+          };
+        }
+        {
+          home-manager.extraSpecialArgs = {
+            inherit inputs;
           };
         }
         ./hosts/charliebacon/default.nix
