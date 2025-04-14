@@ -3,7 +3,8 @@
   home.homeDirectory = "/Users/charliebacon";
   home.stateVersion = "24.11";
     home.packages = with pkgs; [
-      pyenv
+      python311
+      postgresql_17
       nodejs
       deno
       zsh-autosuggestions
@@ -32,7 +33,6 @@
       terragrunt
       git-lfs
       just
-      postgresql
     ];
 
   home.file = {

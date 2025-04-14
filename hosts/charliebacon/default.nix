@@ -13,6 +13,9 @@
     useUserPackages = true;
     users.charliebacon = import ./home.nix;
   };
+  environment.systemPackages = with pkgs; [
+    # System level packages here
+  ];
 
   system.defaults = {
     dock = {
