@@ -4,7 +4,6 @@
   home.stateVersion = "24.11";
     home.packages = with pkgs; [
       python311
-      postgresql_17
       nodejs
       deno
       zsh-autosuggestions
@@ -33,6 +32,8 @@
       terragrunt
       git-lfs
       just
+      gdal
+      yamlfmt
     ];
 
   home.file = {
@@ -284,14 +285,14 @@
 
         git_status = {
           format = "$all_status$ahead_behind ";
-          ahead = "[⬆](bold purple) ";
-          behind = "[⬇](bold purple) ";
-          staged = "[✚](green) ";
-          deleted = "[✖](red) ";
-          renamed = "[➜](purple) ";
+          ahead = "[⬆ ](bold purple) ";
+          behind = "[⬇ ](bold purple) ";
+          staged = "[✚ ](green) ";
+          deleted = "[✖ ](red) ";
+          renamed = "[➜ ](purple) ";
           stashed = "[✭](cyan) ";
-          untracked = "[◼](white) ";
-          modified = "[✱](blue) ";
+          untracked = "[◼ ](white) ";
+          modified = "[✱ ](blue) ";
           conflicted = "[═](yellow) ";
           diverged = "⇕ ";
           up_to_date = "";

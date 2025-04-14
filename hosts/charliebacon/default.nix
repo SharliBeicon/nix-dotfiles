@@ -36,6 +36,9 @@
       upgrade = true;
       autoUpdate = true;
     };
+    brews = [
+      "postgresql"
+    ];
     casks = [
       "whatsapp"
       "telegram"
