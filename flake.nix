@@ -23,24 +23,41 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
-    
+
     fenix = {
       url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    alejandra = {
+      url = "github:kamadorueda/alejandra/4.0.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs @ { self, nixpkgs, nix-darwin, home-manager, nix-homebrew, homebrew-core, homebrew-cask, fenix,... } : {
+  outputs = inputs @ {
+    self,
+    nixpkgs,
+    nix-darwin,
+    home-manager,
+    nix-homebrew,
+    homebrew-core,
+    homebrew-cask,
+    fenix,
+    alejandra,
+    ...
+  }: {
     packages.aarch64-darwin.default = fenix.packages.aarch64-darwin.stable.toolchain;
     darwinConfigurations."charliebacon" = nix-darwin.lib.darwinSystem {
       system = "aarch64-darwin";
       modules = [
         home-manager.darwinModules.home-manager
         nix-homebrew.darwinModules.nix-homebrew
-        ({ pkgs, ... }: {
-          nixpkgs.overlays = [ fenix.overlays.default ];
+        ({pkgs, ...}: {
+          nixpkgs.overlays = [fenix.overlays.default];
           environment.systemPackages = with pkgs; [
-            fenix.packages.${pkgs.system}.stable.completeToolchain
+            fenix.packages.${system}.stable.completeToolchain
+            alejandra.defaultPackage.${system}
           ];
         })
         {

@@ -1,40 +1,44 @@
-{ pkgs, inputs, ... }: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   home.username = "charliebacon";
   home.homeDirectory = "/Users/charliebacon";
   home.stateVersion = "24.11";
-    home.packages = with pkgs; [
-      python311
-      nodejs
-      deno
-      zsh-autosuggestions
-      zoxide
-      thefuck
-      macchina
-      btop
-      yazi
-      odin
-      cmake
-      protobuf
-      awscli2
-      kubectl
-      sops
-      jq
-      ffmpeg
-      lazygit
-      zig
-      ripgrep
-      uv
-      unar
-      eza
-      fzf
-      nerd-fonts.iosevka
-      terraform
-      terragrunt
-      git-lfs
-      just
-      gdal
-      yamlfmt
-    ];
+  home.packages = with pkgs; [
+    python311
+    nodejs
+    deno
+    zsh-autosuggestions
+    zoxide
+    thefuck
+    macchina
+    btop
+    yazi
+    odin
+    cmake
+    protobuf
+    awscli2
+    kubectl
+    sops
+    jq
+    ffmpeg
+    lazygit
+    zig
+    ripgrep
+    uv
+    unar
+    eza
+    fzf
+    nerd-fonts.iosevka
+    terraform
+    terragrunt
+    git-lfs
+    just
+    gdal
+    yamlfmt
+  ];
 
   home.file = {
     ".config/btop/themes/catppuccin_mocha.theme" = {
@@ -61,7 +65,7 @@
     or = "odin run .";
     rgf = "rg --files | rg";
   };
-  
+
   programs = {
     home-manager.enable = true;
     bat = {
@@ -482,7 +486,7 @@
     zsh = {
       enable = true;
       oh-my-zsh.enable = true;
-      oh-my-zsh.plugins = [ "git" "z" "fzf" ];
+      oh-my-zsh.plugins = ["git" "z" "fzf"];
       oh-my-zsh.theme = "robbyrussell";
 
       sessionVariables = {
@@ -492,7 +496,7 @@
       initExtra = ''
         export PROTO_HOME="$HOME/.proto"
         export PATH="$PROTO_HOME/shims:$PROTO_HOME/bin:$PATH"
-        
+
         source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
       '';
     };

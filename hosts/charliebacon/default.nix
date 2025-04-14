@@ -1,6 +1,9 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
   system.stateVersion = 6;
 
   users.users.charliebacon = {
@@ -13,9 +16,6 @@
     useUserPackages = true;
     users.charliebacon = import ./home.nix;
   };
-  environment.systemPackages = with pkgs; [
-    # System level packages here
-  ];
 
   system.defaults = {
     dock = {
@@ -29,7 +29,7 @@
     };
     LaunchServices.LSQuarantine = false;
   };
-  
+
   homebrew = {
     enable = true;
     onActivation = {
