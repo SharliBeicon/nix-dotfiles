@@ -5,6 +5,15 @@
   ...
 }: {
   system.stateVersion = 6;
+  
+  nix.extraOptions = ''
+    # Settings copied from those written by
+    # https://github.com/DeterminateSystems/nix-installer, version 0.11.0.
+    extra-nix-path = nixpkgs=flake:nixpkgs
+    bash-prompt-prefix = (nix:$name)\040
+    experimental-features = nix-command flakes auto-allocate-uids
+    build-users-group = nixbld
+  '';
 
   users.users.charliebacon = {
     name = "charliebacon";

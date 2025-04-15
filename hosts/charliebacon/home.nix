@@ -10,9 +10,6 @@
     python311
     nodejs
     deno
-    zsh-autosuggestions
-    zoxide
-    thefuck
     macchina
     btop
     yazi
@@ -30,7 +27,6 @@
     uv
     unar
     eza
-    fzf
     nerd-fonts.iosevka
     terraform
     terragrunt
@@ -68,6 +64,15 @@
 
   programs = {
     home-manager.enable = true;
+    thefuck.enable = true;
+    zoxide = {
+      enable = true;
+      enableFishIntegration = true;
+    };
+    fzf = {
+      enable = true;
+      enableFishIntegration = true;
+    };
     bat = {
       enable = true;
       config = {
@@ -267,6 +272,7 @@
     };
     starship = {
       enable = true;
+      enableFishIntegration = true;
       settings = {
         format = "$directory$status$all$character";
 
@@ -483,22 +489,105 @@
         log_level = "WARNING";
       };
     };
-    zsh = {
+    zsh.enable = true;
+    fish = {
       enable = true;
-      oh-my-zsh.enable = true;
-      oh-my-zsh.plugins = ["git" "z" "fzf"];
-      oh-my-zsh.theme = "robbyrussell";
-
-      sessionVariables = {
-        RUSTUP_TOOLCHAIN = "stable";
-      };
-
-      initExtra = ''
-        export PROTO_HOME="$HOME/.proto"
-        export PATH="$PROTO_HOME/shims:$PROTO_HOME/bin:$PATH"
-
-        source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+      plugins = [
+        {
+          name = "fzf";
+          src = pkgs.fetchFromGitHub {
+            owner = "PatrickF1";
+            repo = "fzf.fish";
+            rev = "6d8e962f3ed84e42583cec1ec4861d4f0e6c4eb3";
+            sha256 = "sha256-0rnd8oJzLw8x/U7OLqoOMQpK81gRc7DTxZRSHxN9YlM";
+          };
+        }
+        # Need this when using Fish as a default macOS shell in order to pick
+        # up ~/.nix-profile/bin
+        {
+          name = "nix-env";
+          src = pkgs.fetchFromGitHub {
+            owner = "lilyball";
+            repo = "nix-env.fish";
+            rev = "00c6cc762427efe08ac0bd0d1b1d12048d3ca727";
+            sha256 = "1hrl22dd0aaszdanhvddvqz3aq40jp9zi2zn0v1hjnf7fx4bgpma";
+          };
+        }
+      ];
+      shellInit = ''
+        # Set syntax highlighting colours; var names defined here:
+        # http://fishshell.com/docs/current/index.html#variables-color
+        set fish_color_normal normal
+        set fish_color_command white
+        set fish_color_quote brgreen
+        set fish_color_redirection brblue
+        set fish_color_end white
+        set fish_color_error -o brred
+        set fish_color_param brpurple
+        set fish_color_comment --italics brblack
+        set fish_color_match cyan
+        set fish_color_search_match --background=brblack
+        set fish_color_operator cyan
+        set fish_color_escape white
+        set fish_color_autosuggestion brblack
       '';
+      # Send OSC 133 escape sequences to signal prompt and ouput start and end.
+      interactiveShellInit = ''
+        function terminal_integration_preprompt --on-event fish_prompt
+          printf "\033]133;A;\007"
+        end
+
+        # TODO not used yet.
+        function terminal_integration_postprompt
+          printf "\033]133;B;\007"
+        end
+
+        function terminal_integration_preexec --on-event fish_preexec
+          printf "\033]133;C;\007"
+        end
+
+        function terminal_integration_postexec --on-event fish_postexec
+          printf "\033]133;D;\007"
+        end
+      '';
+      shellAbbrs = {
+        g = "git";
+        ga = "git add";
+        gap = "git add -p";
+        gb = "git branch";
+        gc = "git commit";
+        gca = "git commit --amend";
+        gcan = "git commit --amend --no-edit";
+        gcm = "git commit -m";
+        gcl = "git clone";
+        gd = "git diff";
+        gds = "git diff --staged";
+        gl = "git prettylog";
+        gp = "git pull";
+        gP = "git push";
+        gPf = "git push --force-with-lease";
+        gpp = "git pull --prune";
+        gr = "git restore";
+        grs = "git restore --staged";
+        grb = "git rebase";
+        grba = "git rebase --abort";
+        grbc = "git rebase --continue";
+        grbi = "git rebase -i";
+        gs = "git status -s -b";
+        gst = "git stash";
+        gstp = "git stash pop";
+        gsts = "git stash show -p";
+        gstx = "git stash drop";
+        gsw = "git switch";
+        gswc = "git switch -c";
+        gswm = "git switch main";
+      };
+      functions = {
+        fish_greeting = {
+          description = "Greeting to show when starting a fish shell";
+          body = "";
+        };
+      };
     };
     neovim = {
       enable = true;
