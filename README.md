@@ -2,7 +2,7 @@
 
 Here is my system configuration, it's managed by Nix with `home-manager` and `nix-darwin`. All you need to set it up is a fresh installation of MacOS and follow the next steps:
 
-> [!TIP]
+> [!WARNING]
 > Note that a `charliebacon` MacOS user is expected and everything is built around it, if you want to use this flake with your own user, you will need to clone/fork the repo, change all occurrencies of `charliebacon` with the name of your MacOS user and proceed
 
 #### 1. MacOS build essentials
