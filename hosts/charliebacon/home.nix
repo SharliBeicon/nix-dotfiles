@@ -8,6 +8,7 @@
   home.stateVersion = "24.11";
   home.packages = with pkgs; [
     python311
+    nb
     nodejs
     deno
     macchina
@@ -59,6 +60,7 @@
     ls = "eza";
     zbr = "zig build run";
     rgf = "rg --files | rg";
+    love="/Applications/love.app/Contents/MacOS/love";
   };
 
   programs = {
