@@ -109,6 +109,21 @@ M.defaults = function()
     capabilities = require("blink.cmp").get_lsp_capabilities(M.capabilities),
     on_init = M.on_init,
   }
+  lspconfig.pyright.setup {
+    on_attach = M.on_attach,
+    capabilities = require("blink.cmp").get_lsp_capabilities(M.capabilities),
+    on_init = M.on_init,
+  }
+  lspconfig.ts_ls.setup {
+    on_attach = M.on_attach,
+    capabilities = require("blink.cmp").get_lsp_capabilities(M.capabilities),
+    on_init = M.on_init,
+    settings = {
+      completions = {
+        completeFunctionCalls = true,
+      },
+    },
+  }
 end
 
 return M

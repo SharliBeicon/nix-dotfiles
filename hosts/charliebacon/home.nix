@@ -161,6 +161,7 @@
         ".direnv"
       ];
     };
+    k9s.enable = true;
     wezterm = {
       enable = true;
       extraConfig = ''
