@@ -19,6 +19,7 @@
     protobuf
     awscli2
     kubectl
+    kubectx
     sops
     jq
     ffmpeg

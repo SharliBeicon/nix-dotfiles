@@ -46,6 +46,7 @@
       autoUpdate = true;
     };
     brews = [
+      "sketchybar"
       "postgresql"
     ];
     casks = [
@@ -58,7 +59,49 @@
       "signal"
       "raycast"
       "zen-browser"
+      "font-hack-nerd-font"
     ];
+  };
+
+  services = {
+    yabai = {
+      enable = true;
+      enableScriptingAddition = true;
+      config = {
+        layout = "bsp";
+        auto_balance = "on";
+        window_placementt = "second_child";
+        extraConfig = ''
+          yabai -m config top_padding    10
+          yabai -m config bottom_padding 10
+          yabai -m config left_padding   10
+          yabai -m config right_padding  10
+          yabai -m config window_gap     10
+
+          yabai -m config mouse_follows_focus on
+
+          yabai -m config window_opacity on
+          yabai -m config active_window_opacity 1.0
+          yabai -m config normal_window_opacity 0.9
+
+          yabai -m config external_bar all:30:0
+
+          yabai -m rule --add app="^System Settings$" manage=off
+        '';
+      };
+    };
+    skhd = {
+      enable = true;
+      skhdConfig = ''
+        # Basic skhd config
+        alt - h : yabai -m window --focus west
+        alt - l : yabai -m window --focus east
+        alt - k : yabai -m window --focus north
+        alt - j : yabai -m window --focus south
+
+        alt - return : yabai -m window --warp mouse
+      '';
+    };
   };
 
   nixpkgs.config.allowUnfree = true;
