@@ -13,7 +13,6 @@
     jankyborders
     deno
     macchina
-    btop
     yazi
     odin
     cmake
@@ -414,7 +413,7 @@
     btop = {
       enable = true;
       settings = {
-        color_theme = "catppuccin_mocha.theme";
+        color_theme = "gruvbox_material_dark.theme";
         theme_background = true;
         truecolor = true;
         force_tty = false;
