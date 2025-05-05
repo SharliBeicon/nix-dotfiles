@@ -42,9 +42,6 @@
     ".config/btop/themes/catppuccin_mocha.theme" = {
       source = ../../files/btop/themes/catppuccin_mocha.theme;
     };
-    ".config/kitty/themes/gruvbox_dark.conf" = {
-      source = ../../files/kitty/themes/gruvbox_dark.conf;
-    };
   };
 
   home.sessionVariables = {

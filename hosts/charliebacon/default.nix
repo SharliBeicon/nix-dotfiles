@@ -59,7 +59,6 @@
       "signal"
       "raycast"
       "zen-browser"
-      "font-hack-nerd-font"
     ];
   };
 
