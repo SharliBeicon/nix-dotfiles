@@ -7,6 +7,7 @@
   home.homeDirectory = "/Users/charliebacon";
   home.stateVersion = "24.11";
   home.packages = with pkgs; [
+    brave
     python311
     nb
     nodejs

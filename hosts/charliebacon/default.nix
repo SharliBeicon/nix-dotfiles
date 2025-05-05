@@ -58,7 +58,6 @@
       "karabiner-elements"
       "signal"
       "raycast"
-      "zen-browser"
     ];
   };
 
@@ -71,11 +70,11 @@
         auto_balance = "on";
         window_placementt = "second_child";
         extraConfig = ''
-          yabai -m config top_padding    10
-          yabai -m config bottom_padding 10
-          yabai -m config left_padding   10
-          yabai -m config right_padding  10
-          yabai -m config window_gap     10
+          yabai -m config top_padding    12
+          yabai -m config bottom_padding 12
+          yabai -m config left_padding   12
+          yabai -m config right_padding  12
+          yabai -m config window_gap     12
 
           yabai -m config mouse_follows_focus on
 
