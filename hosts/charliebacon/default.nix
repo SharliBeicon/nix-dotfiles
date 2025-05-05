@@ -83,9 +83,11 @@
           yabai -m config active_window_opacity 1.0
           yabai -m config normal_window_opacity 0.9
 
-          yabai -m config external_bar all:30:0
+          yabai -m config external_bar all:32:0
 
           yabai -m rule --add app="^System Settings$" manage=off
+          
+          borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=3.0 &
         '';
       };
     };

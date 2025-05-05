@@ -10,6 +10,7 @@
     python311
     nb
     nodejs
+    jankyborders
     deno
     macchina
     btop
@@ -39,8 +40,8 @@
   ];
 
   home.file = {
-    ".config/btop/themes/catppuccin_mocha.theme" = {
-      source = ../../files/btop/themes/catppuccin_mocha.theme;
+    ".config/btop/themes/gruvbox_material_dark.theme" = {
+      source = ../../files/btop/themes/gruvbox_material_dark.theme;
     };
   };
 
@@ -194,6 +195,8 @@
             },
           },
           font_size = 19.0,
+          window_background_opacity = 0.96,
+          window_decorations = "RESIZE | MACOS_FORCE_ENABLE_SHADOW",
           keys = {
             -- Close panes with shift+w.
             {
