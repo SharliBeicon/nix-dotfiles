@@ -85,6 +85,7 @@
           yabai -m config external_bar all:32:0
 
           yabai -m rule --add app="^System Settings$" manage=off
+          yabai -m rule --add app="^Activity Monitor$" manage=off
           
           borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=3.0 &
         '';

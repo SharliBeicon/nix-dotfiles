@@ -551,6 +551,7 @@
         gca = "git commit --amend";
         gcan = "git commit --amend --no-edit";
         gcm = "git commit -m";
+        gmr = "git merge";
         gcl = "git clone";
         gd = "git diff";
         gds = "git diff --staged";
