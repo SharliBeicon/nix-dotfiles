@@ -100,6 +100,16 @@
         alt - k : yabai -m window --focus north
         alt - j : yabai -m window --focus south
 
+        alt + cmd - 1 : yabai -m space --focus 1
+        alt + cmd - 2 : yabai -m space --focus 2
+        alt + cmd - 3 : yabai -m space --focus 3
+        alt + cmd - 4 : yabai -m space --focus 4
+        alt + cmd - 5 : yabai -m space --focus 5
+        alt + cmd - 6 : yabai -m space --focus 6
+        alt + cmd - 7 : yabai -m space --focus 7
+        alt + cmd - 8 : yabai -m space --focus 8
+        alt + cmd - 9 : yabai -m space --focus 9
+
         alt - return : yabai -m window --warp mouse
       '';
     };
