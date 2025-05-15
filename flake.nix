@@ -2,8 +2,9 @@
   description = "Home Manager configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-
+    nixpkgs = {
+      url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    };
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -54,7 +55,10 @@
         home-manager.darwinModules.home-manager
         nix-homebrew.darwinModules.nix-homebrew
         ({pkgs, ...}: {
-          nixpkgs.overlays = [fenix.overlays.default];
+          nixpkgs = {
+            config.allowUnfree = true;
+            overlays = [fenix.overlays.default];
+          };
           environment.systemPackages = with pkgs; [
             fenix.packages.${system}.stable.completeToolchain
             alejandra.defaultPackage.${system}

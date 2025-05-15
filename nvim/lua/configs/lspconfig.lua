@@ -109,12 +109,12 @@ M.defaults = function()
     capabilities = require("blink.cmp").get_lsp_capabilities(M.capabilities),
     on_init = M.on_init,
   }
-  lspconfig.pyright.setup {
+  lspconfig.zls.setup {
     on_attach = M.on_attach,
     capabilities = require("blink.cmp").get_lsp_capabilities(M.capabilities),
     on_init = M.on_init,
   }
-  lspconfig.zls.setup {
+  lspconfig.clangd.setup {
     on_attach = M.on_attach,
     capabilities = require("blink.cmp").get_lsp_capabilities(M.capabilities),
     on_init = M.on_init,

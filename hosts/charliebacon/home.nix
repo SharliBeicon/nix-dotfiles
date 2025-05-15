@@ -7,9 +7,11 @@
   home.homeDirectory = "/Users/charliebacon";
   home.stateVersion = "24.11";
   home.packages = with pkgs; [
+    obsidian
     brave
     python311
     nb
+    sdl3
     nodejs
     jankyborders
     deno
