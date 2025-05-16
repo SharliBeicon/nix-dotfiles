@@ -29,11 +29,6 @@
       url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    alejandra = {
-      url = "github:kamadorueda/alejandra/4.0.0";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = inputs @ {
@@ -45,7 +40,6 @@
     homebrew-core,
     homebrew-cask,
     fenix,
-    alejandra,
     ...
   }: {
     packages.aarch64-darwin.default = fenix.packages.aarch64-darwin.stable.toolchain;
@@ -61,7 +55,6 @@
           };
           environment.systemPackages = with pkgs; [
             fenix.packages.${system}.stable.completeToolchain
-            alejandra.defaultPackage.${system}
           ];
         })
         {

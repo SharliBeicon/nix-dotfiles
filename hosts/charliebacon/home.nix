@@ -7,7 +7,6 @@
   home.homeDirectory = "/Users/charliebacon";
   home.stateVersion = "24.11";
   home.packages = with pkgs; [
-    zerotierone
     obsidian
     brave
     python311

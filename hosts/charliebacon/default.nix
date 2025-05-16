@@ -50,6 +50,7 @@
       "postgresql"
     ];
     casks = [
+      "zerotier-one"
       "whatsapp"
       "telegram"
       "slack"
