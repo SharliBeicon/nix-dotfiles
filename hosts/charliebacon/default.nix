@@ -71,7 +71,6 @@
         auto_balance = "on";
         window_placementt = "second_child";
         extraConfig = ''
-          yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
           sudo yabai --load-sa
 
           yabai -m config top_padding    12
