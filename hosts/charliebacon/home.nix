@@ -7,6 +7,8 @@
   home.homeDirectory = "/Users/charliebacon";
   home.stateVersion = "24.11";
   home.packages = with pkgs; [
+    onefetch
+    tokei
     obsidian
     brave
     python311
