@@ -15,6 +15,8 @@ return {
         end
       end,
       formatters_by_ft = {
+        html = { "prettierd" },
+        astro = { "prettierd" },
         lua = { "stylua" },
         rust = { "rustfmt" },
         javascript = { "prettierd" },

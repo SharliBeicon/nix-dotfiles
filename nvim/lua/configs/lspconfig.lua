@@ -64,10 +64,11 @@ M.defaults = function()
   dofile(vim.g.base46_cache .. "lsp")
   require("nvchad.lsp").diagnostic_config()
   local lspconfig = require "lspconfig"
+  local capabilities = require("blink.cmp").get_lsp_capabilities(M.capabilities)
 
   lspconfig.lua_ls.setup {
     on_attach = M.on_attach,
-    capabilities = require("blink.cmp").get_lsp_capabilities(M.capabilities),
+    capabilities = capabilities,
     on_init = M.on_init,
 
     settings = {
@@ -91,42 +92,10 @@ M.defaults = function()
       },
     },
   }
-  lspconfig.rust_analyzer.setup {
-    on_attach = M.on_attach,
-    capabilities = require("blink.cmp").get_lsp_capabilities(M.capabilities),
-    on_init = M.on_init,
-    settings = {
-      ["rust-analyzer"] = {},
-    },
-  }
-  lspconfig.ols.setup {
-    on_attach = M.on_attach,
-    capabilities = require("blink.cmp").get_lsp_capabilities(M.capabilities),
-    on_init = M.on_init,
-  }
-  lspconfig.pyright.setup {
-    on_attach = M.on_attach,
-    capabilities = require("blink.cmp").get_lsp_capabilities(M.capabilities),
-    on_init = M.on_init,
-  }
-  lspconfig.zls.setup {
-    on_attach = M.on_attach,
-    capabilities = require("blink.cmp").get_lsp_capabilities(M.capabilities),
-    on_init = M.on_init,
-  }
-  lspconfig.clangd.setup {
-    on_attach = M.on_attach,
-    capabilities = require("blink.cmp").get_lsp_capabilities(M.capabilities),
-    on_init = M.on_init,
-  }
-  lspconfig.glsl_analyzer.setup {
-    on_attach = M.on_attach,
-    capabilities = require("blink.cmp").get_lsp_capabilities(M.capabilities),
-    on_init = M.on_init,
-  }
+
   lspconfig.ts_ls.setup {
     on_attach = M.on_attach,
-    capabilities = require("blink.cmp").get_lsp_capabilities(M.capabilities),
+    capabilities = capabilities,
     on_init = M.on_init,
     settings = {
       completions = {
@@ -134,6 +103,24 @@ M.defaults = function()
       },
     },
   }
+
+  local servers = {
+    "rust_analyzer",
+    "ols",
+    "pyright",
+    "zls",
+    "clangd",
+    "glsl_analyzer",
+    "prettierd",
+  }
+
+  for _, server in ipairs(servers) do
+    lspconfig[server].setup {
+      on_attach = M.on_attach,
+      capabilities = capabilities,
+      on_init = M.on_init,
+    }
+  end
 end
 
 return M
