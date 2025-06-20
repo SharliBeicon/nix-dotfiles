@@ -7,41 +7,43 @@
   home.homeDirectory = "/Users/charliebacon";
   home.stateVersion = "24.11";
   home.packages = with pkgs; [
-    bun
-    onefetch
-    tokei
-    obsidian
-    brave
-    python311
-    nb
-    sdl3
-    nodejs
-    jankyborders
-    deno
-    macchina
-    yazi
-    odin
-    cmake
-    protobuf
     awscli2
-    kubectl
-    kubectx
-    sops
-    jq
-    ffmpeg
-    lazygit
-    zig
-    ripgrep
-    uv
-    unar
+    brave
+    bun
+    cmake
+    deno
     eza
+    ffmpeg
+    gdal
+    git-lfs
+    jankyborders
+    jq
+    just
+    kind
+    kubectx
+    kubectl
+    lazygit
+    macchina
+    mise
+    nb
     nerd-fonts.iosevka
+    nodejs
+    obsidian
+    odin
+    onefetch
+    protobuf
+    python311
+    ripgrep
+    sdl3
+    sops
     terraform
     terragrunt
-    git-lfs
-    just
-    gdal
+    tokei
+    unar
+    uv
     yamlfmt
+    yazi
+    zig
   ];
 
   home.file = {
