@@ -49,6 +49,7 @@
     brews = [
       "sketchybar"
       "postgresql"
+      "helm"
     ];
     casks = [
       "zerotier-one"

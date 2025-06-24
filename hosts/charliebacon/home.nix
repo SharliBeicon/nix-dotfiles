@@ -9,6 +9,7 @@
   home.packages = with pkgs; [
     awscli2
     brave
+    buf
     bun
     cmake
     deno
@@ -24,9 +25,11 @@
     kubectl
     lazygit
     macchina
+    meson
     mise
     nb
     nerd-fonts.iosevka
+    ninja
     nodejs
     obsidian
     odin
