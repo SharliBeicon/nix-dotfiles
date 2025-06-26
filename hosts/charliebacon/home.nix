@@ -17,6 +17,7 @@
     ffmpeg
     gdal
     git-lfs
+    grpcurl
     jankyborders
     jq
     just
