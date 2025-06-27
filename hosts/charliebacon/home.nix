@@ -19,6 +19,7 @@
     git-lfs
     grpcurl
     jankyborders
+    jj
     jq
     just
     kind
